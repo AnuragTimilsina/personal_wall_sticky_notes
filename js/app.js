@@ -44,3 +44,19 @@ function showNotes() {
     notesElm.innerHTML = `Nothing to show! Use "Add a Note" section above to add notes.`;
   }
 }
+
+// Function to delete a note
+function deleteNote(index) {
+//   console.log("I am deleting", index);
+
+  let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+
+  notesObj.splice(index, 1);
+  localStorage.setItem("notes", JSON.stringify(notesObj));
+  showNotes();
+}
